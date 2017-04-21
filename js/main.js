@@ -23,6 +23,13 @@ $( document ).ready(function() {
     //      (NOTE: You do not have to perform any validation on the data as
     //          a base requirement.)
 
+$('#login-form.btn') .on('click', function(){
+$('#login-form').hide();
+ $('.user-fullname').text (userinfo.firstName + '' + userinfo.lastName);
+ $('.user-fullname').show();
+});
+
+
 
     // TODO: Create a function to listen for clicks on all the "View Details"
     // buttons so that when a user clicks a "View Details" button they see
@@ -34,6 +41,23 @@ $( document ).ready(function() {
     //      4. Change the text of the "view details" button to read "hide details" so the user
     //          understands they can hide the text again.
 
+$('.view-details') .on('click', function(event) {
+    console.log(event);
+  var targetElement = event.target;
+  var container = targetElement.parentElement.parentElement;
+
+$(container).find('.details').each (function (index, el) {
+  if ($(el).is(':visible')) {
+    $(el).fadeOut();
+    targetElement.innerText="View Details"
+  }
+  else {
+    $(el).fadeln();
+     targetElement.innerText= "Hide Details"
+     }
+   });
+});
+
     // TODO: Create a function that listens for clicks on the voting buttons and
     // looks at the `data-vote` attribute on each button to see what was voted for,
     // then determines the updated vote breakdown to adjust the progress bars.
@@ -44,4 +68,20 @@ $( document ).ready(function() {
     //      4. Determine the respective percentages (out of 100) for each progress bar.
     //      5. Modify the `width` attribute on each progress bar to set the updated percentage.
 
+$('.vote') .on('click', function (event) {
+  ($(this).attr('data-vote')  === 'great'); {
+   voteCounts.great = voteCounts.great + 1;
+  }
+  {voteCounts.greatest = votCounts.greatest + 1;}
+
+  voteCounts.total = voteCounts.total +1;
+
+  var greatPrecent = voteCounts.great/voteCounts.total *100;
+  var greatestPercent = voteCounts.greatest/voteCounts.total*100;
+
+  $('great-Progress').css ('width', greatPercent + '%');
+  $('.greatest-Progress').css ('width', greatestPercent + '%');
+
 });
+});
+}
