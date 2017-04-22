@@ -5,7 +5,7 @@
 
 $( document ).ready(function() {
     var userInfo = {
-        firstName: 'Jane',
+        firstName: '',
         lastName: 'Doe'
     };
     var voteCounts = {
@@ -48,7 +48,7 @@ $(container).find('.details').each(function(index, el){
     $(el).fadeOut();
     targetElement.innerText= "View Details"
   } else {
-    $(el).fadeln();
+    $(el).fadeIn();
      targetElement.innerText= "Hide Details"
      }
    });
@@ -72,7 +72,7 @@ $('.vote').on('click', function(event){
       voteCounts.total++;
 
   } else {
-    if ($(this).attr('data-vote')==='greatest'{
+    if ($(this).attr('data-vote')==='greatest'){
       voteCounts.greatest++;
       voteCounts.total++;
     }
